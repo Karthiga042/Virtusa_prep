@@ -1,0 +1,45 @@
+Take less steps?
+Problem Statement:
+
+Lily is presented with an array of integers, some of which may be the same. Her objective is to determine the minimum count of operations required to transform all the array elements into distinct values. Each operation permits Lily to increase a value by just 1. Could you devise an algorithmic solution to assist Lily in this challenge?
+
+Constraints :
+1<= n<= 3000
+10^-3<= nums[i] <= 10^3
+
+Input :
+3
+1 2 2
+
+Output :
+1
+
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=sc.nextInt();
+		}
+		Arrays.sort(arr);
+		int ops=0;
+		for(int i=1;i<n;i++)
+		{
+		    if(arr[i]<=arr[i-1])
+		    {
+		        int required=arr[i-1]+1;
+		        // Count how many +1 steps needed
+		        ops+=(required-arr[i]);
+		        arr[i]=required;
+		    }
+		}
+		System.out.println(ops);
+	}
+}
