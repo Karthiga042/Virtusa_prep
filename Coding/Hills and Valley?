@@ -1,0 +1,58 @@
+Hills and Valley?
+Problem Statement:
+
+A group of children in the hills of Shimla thought of playing a new game. To start the game, the children formed a group and explained the rules of the game among themselves.
+The rule of the game was that the children had to run away and stand on their heels, either in the valley . Children were not supposed to stand in the middle of the Hisar rally. But if he stands up, he will not be counted in the game.
+Definition of hills: Small mountains are usually known as heels which are easier to climb. a hill will usually have an obvious summit, which is its highest point.
+Definition of valley: A valley is a long depression, or ditch, in Earth’s surface. It usually lies between ranges of hills or mountains. Most valleys are formed by rivers that erode, or wear down, soil and rocks.
+Now the main task of the game was to count how many hills and valleys were covered by the group of children. If the child was standing or sitting in any space between the hills and the valley, that space would not count.
+
+Constraints :
+3<= nums.size() <= 100
+1 <= nums[i] <= 100
+
+Input :
+6
+2 4 1 1 6 5
+
+Output :
+3
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=sc.nextInt();
+		}
+		List<Integer> list=new ArrayList<>();
+		list.add(arr[0]);
+		for(int i=1;i<n;i++)
+        {
+            if(arr[i]!=arr[i-1])
+            {
+                list.add(arr[i]);
+            }
+        }
+		int hills=0,valleys=0;
+		for(int i=1;i<list.size()-1;i++)
+		{
+		    if(list.get(i)<list.get(i-1) && list.get(i)<list.get(i+1))
+		    {
+		        valleys++;
+		    }
+		    if(list.get(i)>list.get(i-1) && list.get(i)>list.get(i+1))
+		    {
+		        hills++;
+		    }
+		}
+		int count=valleys+hills;
+		System.out.println(count);
+	}
+}
