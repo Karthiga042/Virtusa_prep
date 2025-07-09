@@ -1,0 +1,42 @@
+Problem Statement:
+Aditya and Mohan are two friends. Aditya said to Mohan, let’s do your brain test today and check whether you get confused or not. To test Mohan’s brain, Aditya gives him two strings, a string S1 and a string S2.
+Here string S1 = coaching and string S2 = coding
+While instructing Mohan, Aditya said that the letters of both the strings are in lowercase. Now Mohan’s curiosity was increasing, So he asked Aditya what he has to do with these two strings.
+Aditya instructs Mohan
+
+that he has to provide a solution to find the minimum number of characters that need to be appended at the end of the first string, so the second string becomes a subsequence of the first string.
+all the letters of the second string have to be compared with the first string in order to confirm/prove that first string is a subsequence of the second string
+Now Mohan has to give the algorithmic solution to pass this brain test.
+Definition of subsequence: A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
+
+Constraints :
+1 <= s.length <= 10^5
+String1 and string2 consist of only lowercase english letters
+
+Input :
+String 1 : coaching
+String 2 : coding
+
+Output :
+4
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s1=sc.nextLine();
+		String s2=sc.nextLine();
+		int i=0,j=0;
+		while(i<s1.length() && j<s2.length())
+		{
+		    if(s1.charAt(i)==s2.charAt(j))
+		    {
+		        j++;
+		    }
+		    i++;
+		}
+		int toAppend=s2.length()-j;
+		System.out.print(toAppend);
+	}
+}
