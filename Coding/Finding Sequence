@@ -1,0 +1,52 @@
+Problem Statement:
+On Monday morning,the principal of a school in Noida thought that let’s do something different with the children today. So the principal called different students to the assembly hall and formed a group of students from different classes of his school to explain to them the task they want to do today. Now the principal explained to them that all the people you have gathered here are a group. So the task is that all you have to do is that all the people who are in this group, you have to tell your roll number. After collecting the roll numbers, you have to make a line according to the roll numbers in the ascending order. And to check how many consecutive sub-sequences are being formed in the line that is being formed according to these roll numbers?
+And Finally the main task is that we have to see, out of the consecutive sub-sequences that are being made according to the roll number, what is the maximum possible length of the consecutive sequence of n roll no. of students taken in the beginning ?
+
+Definition of consecutive sequence: Numbers that follow each other continuously in the order from smallest to largest are called consecutive numbers.
+
+Constraints :
+0 <= nums.length <= 10^5
+-10^9 <= nums[i] <= 10^9
+
+Input :
+6 = number of elements
+
+[100,4,200,1,3,2] = elements
+
+Output :
+4
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=sc.nextInt();
+		}
+		Arrays.sort(arr);
+		int maxLen=1;
+		int currLen=1;
+		for(int i=1;i<n;i++)
+		{
+		    if(arr[i]==arr[i-1]) //allow duplicates
+		    {
+		        continue;
+		    }
+		    else if(arr[i]==arr[i-1]+1)
+		    {
+		        currLen++;
+		    }
+		    else 
+		    {
+		        currLen=1;
+		    }
+		    maxLen=Math.max(maxLen,currLen);
+		}
+		System.out.println(maxLen);
+	}
+}
