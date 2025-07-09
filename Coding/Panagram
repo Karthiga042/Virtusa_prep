@@ -1,0 +1,38 @@
+Am I Panagram?
+Problem Statement:
+
+Aman has given a sentence with a meaning, his task is to check whether the given sentence is panagram or not. Your task is to write an algorithmic code to help aman.
+(Panagram is the sentence which complete all the english alphabet at least once)
+
+Input :
+6
+abc defghu ijklmnbop qrstuvw xyy yz
+
+Output :
+True
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		int freq[]=new int[26];
+		boolean ans=true;
+		for(int i=0;i<s.length();i++)
+		{
+		    if(s.charAt(i)>='a' && s.charAt(i)<='z')
+		    {
+		        freq[s.charAt(i)-'a']++;
+		    }
+		}
+		for(int i=0;i<freq.length;i++)
+		{
+		    if(freq[i]==0)
+		    {
+		        ans=false;
+		    }
+		}
+		System.out.println(ans);
+	}
+}
