@@ -1,0 +1,99 @@
+Find peak?
+Problem Statement:
+
+Ram has given an array of elements ,his task is to find the peak element (A peak element is an element that is strictly greater than its neighbors) index from the given n elements. Write an algorithmic code for the following problem.
+
+Constraints :
+1<= nums.length <= 3000
+10^-5 <= nums[i]<= 10^5
+
+
+Input :
+4
+1 2 3 1
+
+Output :
+3
+
+Input 1 :
+4
+1 4 3 1
+
+Output 1 :
+4
+
+Input 2 :
+4
+1 4 7 1
+
+Output 2:
+7
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=sc.nextInt();
+		}
+		if(n==1 || arr[0]>arr[1])
+		{
+		    System.out.println(arr[0]);
+		    return;
+		}
+		for(int i=1;i<n-1;i++)
+		{
+		    if(arr[i]>arr[i-1] && arr[i]>arr[i+1])
+		    {
+		        System.out.println(arr[i]);
+		        return;
+		    }
+		}
+		if(arr[n-1]>arr[n-2])
+		{
+		    System.out.print(arr[n-1]);
+		    return;
+		}
+		System.out.println("No peak element");
+	}
+}
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=sc.nextInt();
+		}
+		int peakElement=peak(n,arr);
+		System.out.println(peakElement);
+	}
+	public static int peak(int n,int arr[])
+	{
+	    int l=0,r=n-1;
+	    while(l<r)
+	    {
+	        int mid=l+(r-l)/2;
+	        if(arr[mid]<arr[mid+1])
+	        {
+	            l=mid+1;
+	        }
+	        else 
+	        {
+	            r=mid;
+	        }
+	    }
+	    return arr[l];
+	}
+}
